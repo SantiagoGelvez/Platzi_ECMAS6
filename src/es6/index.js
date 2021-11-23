@@ -72,3 +72,61 @@ let team2 = ["David", "Marcela", "Diana"];
 let education = ["Ramiro", ...team1, ...team2];
 
 console.log(education);
+
+// ############# Propiedad de objetos mejorada #############
+
+let name = "Santiago";
+let age = 27;
+
+// Antes de ES6
+let obj = { name: name, age: age };
+console.log(obj);
+
+// Despues de ES6
+let obj2 = { name, age };
+console.log(obj2);
+
+// ############# Arrow Functions ##############
+
+let persons = [
+  { name: "Santiago", age: "27" },
+  { name: "Lucas", age: "34" },
+];
+
+// Antes de ES6
+let listOfNames1 = persons.map(function (item) {
+  console.log(item.name);
+});
+
+// Despues de ES6
+let listOfNames2 = persons.map((item) => console.log(item.name));
+
+// Mas formas de utilizar las arrow functions
+
+const listOfNames3 = (name, age, country) => {
+  skip; // Aqui va el código que necesitemos y donde vamos a usar los parámetros
+};
+
+const listOfNames4 = (name) => {
+  skip; // Aquí va el código que necesitemos y donde usemos el parametro name (puede ser cualquiera)
+};
+
+const square = (num) => num * num;
+console.log(square(5));
+
+// ########## Promesas ############
+
+const myPromise = () => {
+    return new Promise((yesPromise, noPromise) => {
+        if(true){
+            yesPromise('Hey!!');
+        }
+        else{
+            noPromise('Ups!!');
+        }
+    });
+}
+
+myPromise()
+    .then(truePromise => console.log(truePromise))
+    .catch(falsePromise => console.log(falsePromise))
