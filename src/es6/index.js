@@ -61,7 +61,7 @@ let person = {
 console.log(person.name, person.age);
 
 // Despues de ES6
-let { name, age, country } = person;
+let { name, age, country } = person; // Debe tener el mismo nombre que la definición let person
 console.log(name, age);
 
 // ############## Sread Opertator ############
@@ -79,7 +79,7 @@ let name = "Santiago";
 let age = 27;
 
 // Antes de ES6
-let obj = { name: name, age: age };
+let obj = { name: name, age: age }; // Quedaría con nombre name_1, age_1
 console.log(obj);
 
 // Despues de ES6
@@ -117,16 +117,59 @@ console.log(square(5));
 // ########## Promesas ############
 
 const myPromise = () => {
-    return new Promise((yesPromise, noPromise) => {
-        if(true){
-            yesPromise('Hey!!');
-        }
-        else{
-            noPromise('Ups!!');
-        }
-    });
-}
+  return new Promise((yesPromise, noPromise) => {
+    if (true) {
+      yesPromise("Hey!!");
+    } else {
+      noPromise("Ups!!");
+    }
+  });
+};
 
 myPromise()
-    .then(truePromise => console.log(truePromise))
-    .catch(falsePromise => console.log(falsePromise))
+  .then((truePromise) => console.log(truePromise))
+  .catch((falsePromise) => console.log(falsePromise));
+
+// ############### Clases ################
+
+class calculator {
+  constructor(){ // Creacion del constructor
+    this.valueA = 0;
+    this.valueB = 0;
+  }
+  sum(valA, valB){ // Modulo. Puede ser mas de uno
+    this.theValA = valA;
+    this.theValB = valB;
+    return this.theValA + this.theValB;
+  }
+}
+
+const calc = new calculator();
+console.log(calc.sum(2,2));
+
+// ################ Import y Export (trabajar con Modulos) #########
+
+// Esta es la nueva sitaxis, sin embargo, no funciona el code runner por la version de Node
+import {hello} from './module';
+console.log(hello()); // Al parecer no se puede ejecutar porque Node aun no soporta esto en las ultimas versiones
+
+// Esta es la sintaxis anterior que si funciona con la version del node del code runner
+const hello = require('./module_old_version')
+console.log(hello()); // De esta forma si es posible acceder al modulo que creamos.
+
+// ############### Generadores ###############
+
+function* helloWorld(){
+  if(true){
+    yield 'Hello, ';
+  }
+  if(true){
+    yield 'World';
+  }
+}
+
+const generatorHello = helloWorld();
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+console.log(generatorHello.next().value);
+
